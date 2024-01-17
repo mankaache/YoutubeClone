@@ -1,19 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+interface initialStateType {
+    selectedCategory? : string
+}
 
-const initialState = {
-    loading: false,
-    // videos: [],
-    // error: ''
+const initialState:initialStateType = {
+    selectedCategory: undefined
 
 }
 
 export const VideoSlice = createSlice({
-    name:'video',
-    initialState,
-    reducers:{
-       
-        
-    }
-})
+  name: 'video',
+  initialState,
+  reducers: {
+    category: (state, action: PayloadAction<string>) => {
+      state.selectedCategory = action.payload;
+    },
+  },
+});
 
-// export const {  } = VideoSlice.actions;
+ export const { category } = VideoSlice.actions;

@@ -1,8 +1,11 @@
 import {categories} from '../../utils/constant'
+import { useTypedDispatch } from '../../redux/hooks';
+import { category } from '../../redux/features';
 
 const SideBar = () => {
-
-    const selectedCategory = 'Coding';
+    const dispatch = useTypedDispatch()
+    const selectedCategory = 'Coding'
+    dispatch(category(selectedCategory))
 
   return (
     <section className='overflow-y-auto h-auto md:h-[95%] flex items-center justify-between md:flex-col'>
