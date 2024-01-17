@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const apiURL: string | undefined = process.env.REACT_APP_BASE_URL;
+const apiURL: string | undefined = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 
 const headers: HeadersInit | undefined =
-  process.env.REACT_APP_RAPID_API_KEY && process.env.REACT_APP_RAPID_API_HOST
+  import.meta.env.VITE_REACT_APP_RAPID_API_KEY &&
+  import.meta.env.VITE_REACT_APP_RAPID_API_HOST
     ? {
-        'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
-        'X-RapidAPI-Host': process.env.REACT_APP_RAPID_API_HOST,
+        'X-RapidAPI-Key': import.meta.env.VITE_REACT_APP_RAPID_API_KEY,
+        'X-RapidAPI-Host': import.meta.env.VITE_REACT_APP_RAPID_API_HOST,
       }
     : undefined;
 
@@ -24,7 +25,7 @@ export const API = createApi({
 
   endpoints: (builder)=> ({
 
-    search: builder.query<
+    getSearch: builder.query<
     {
         data:{[key:string]:any}
     },{
@@ -46,4 +47,4 @@ export const API = createApi({
 });
 
 
-export const { useSearchQuery } = API;
+export const { useGetSearchQuery } = API;
