@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import {Home,VideoDetail,ChannelDetail,Search} from './components/pages'
+import {Home,VideoDetail,ChannelDetail,Search} from './pages'
 import {Navbar} from './components/layout'
 
 
