@@ -1,16 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {categories} from '../../utils/constant'
 import { useTypedDispatch } from '../../redux/hooks';
 import { category } from '../../redux/features';
+import { useEffect, useState } from 'react';
 
 const SideBar = () => {
     const dispatch = useTypedDispatch()
-    const selectedCategory = 'Coding'
-    dispatch(category(selectedCategory))
+    const [selectedCategory,setSelectedCategory] = useState('New')
+
+   const handleCategoryChange = (newCategory: string) => {
+     dispatch(category(newCategory));
+     setSelectedCategory(newCategory);
+   };
+
+   useEffect(() => {
+     handleCategoryChange(selectedCategory);
+   }, [selectedCategory, dispatch]);
 
   return (
     <section className='overflow-y-auto h-auto md:h-[95%] flex items-center justify-between md:flex-col'>
       {categories.map((category) => (
         <button
+        onClick={()=>{
+          setSelectedCategory(category.name)
+        }}
           key={category.name}
           className='category-btn text-white'
           style={{
