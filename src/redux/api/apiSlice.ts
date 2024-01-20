@@ -1,21 +1,16 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const apiURL: string | undefined = import.meta.env.VITE_REACT_APP_BASE_URL;
-
-
-const headers: HeadersInit | undefined =
-  import.meta.env.VITE_REACT_APP_RAPID_API_KEY &&
-  import.meta.env.VITE_REACT_APP_RAPID_API_HOST
-    ? {
-        'X-RapidAPI-Key': import.meta.env.VITE_REACT_APP_RAPID_API_KEY,
-        'X-RapidAPI-Host': import.meta.env.VITE_REACT_APP_RAPID_API_HOST,
-      }
-    : undefined;
+const apiURL: string | undefined = 'https://youtube-v31.p.rapidapi.com';
 
 const baseQueryFn = fetchBaseQuery({
   baseUrl: apiURL,
-  headers,
+  headers:{
+        'X-RapidAPI-Key': '570d610ccbmshb0bfc07bc3bb27ap15877ajsn389b10a2425a',
+        'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com',
+      }
+
 });
 
 
@@ -23,27 +18,22 @@ export const API = createApi({
   reducerPath: 'api',
   baseQuery: baseQueryFn,
 
-  endpoints: (builder)=> ({
-
+  endpoints: (builder) => ({
     getSearch: builder.query<
-    {
-        data:{[key:string]:any}
-    },{
-        searchTerm:string,
-        part:string
-    }>({
-        query: ({searchTerm, part}) => ({
-            url:`/search?part=${part}&q=${searchTerm}/`,
-            method:'GET',
-            params:{
-                searchTerm,
-                part,
-                maxResults: '50'
-            }
-
-        }),
-    })
-  })
+      {
+        items: Array<{ kind: string; id: any; snippet: any }>;
+      },
+      { searchTerm: string; part: string }
+    >({
+      query: ({ searchTerm, part }) => ({
+        url: `/search?part=${part}&q=${searchTerm}`,
+        method: 'GET',
+        params: {
+          maxResults: '50',
+        },
+      }),
+    }),
+  }),
 });
 
 
