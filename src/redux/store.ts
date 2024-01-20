@@ -7,6 +7,15 @@ export const store = configureStore({
     [API.reducerPath]: API.reducer,
     video: VideoSlice.reducer,
   },
+
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }).concat(
+      API.middleware
+      // logger
+    ),
+
+  devTools: import.meta.env.PROD ? true : false,
+  //   preloadedState:
 });
 
 export type RootStateType = ReturnType<typeof store.getState>;
