@@ -4,7 +4,7 @@ import { SearchBar } from '../layout';
 
 const Navbar = () => {
   return (
-    <section className='w-full py-2 '>
+    <section className='w-full py-2 bg-gray-800 shadow-md '>
       <nav className='flex justify-between items-center w-[90%] mx-auto'>
         <NavLink to='/'>
           <img src={logo} alt='image of a logo' className='w-12 mt-3 h-12' />
