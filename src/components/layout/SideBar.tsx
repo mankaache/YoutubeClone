@@ -18,12 +18,12 @@ const SideBar = () => {
    }, [selectedCategory, dispatch]);
 
   return (
-    <section className='overflow-y-auto h-auto md:h-[95%] flex items-center justify-between md:flex-col'>
+    <section className='side pb-10 pr-4 overflow-y-auto h-auto md:h-[92%] mt-20 z-30 flex items-center justify-between md:flex-col'>
       {categories.map((category) => (
         <button
-        onClick={()=>{
-          setSelectedCategory(category.name)
-        }}
+          onClick={() => {
+            setSelectedCategory(category.name);
+          }}
           key={category.name}
           className='category-btn text-white'
           style={{
@@ -45,6 +45,7 @@ const SideBar = () => {
             style={{
               opacity: category.name === selectedCategory ? '1' : '0.7',
               marginRight: '15px',
+              whiteSpace: 'nowrap',
             }}
           >
             {category.name}
