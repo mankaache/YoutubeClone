@@ -9,7 +9,7 @@ const Navbar = () => {
         <NavLink to='/'>
           <img src={logo} alt='image of a logo' className='w-12 mt-3 h-12' />
         </NavLink>
-        <div className='w-[40%]'>
+        <div className='w-[40%] pb-4'>
           <SearchBar />
         </div>
       </nav>

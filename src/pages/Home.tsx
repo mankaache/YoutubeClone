@@ -30,18 +30,21 @@ const Home = () => {
 
 
   return (
-    <main className='flex md:flex-row flex-col '>
-      <section className='h-auto md:h-[100vh] border-r border-collapse-[#3d3d3d] px-0 md:px-2'>
+    <main className='flex md:flex-row flex-col relative '>
+      <section className=' md:fixed bg-gray-800 h-auto md:h-[100vh]
+       px-0 md:px-2'>
         <SideBar />
-
-        <div className='text-white mt-3'>&copy; Copyright 2024 Mankaa che</div>
       </section>
 
-      <section className='px-7'>
-        <div className=' pb-7 font-bold text-3xl text-white'>
+      <section className='md:pl-[16rem] pt-[3rem] md:pt-[6rem]'>
+        <div className='px-7 md:px-0 pb-7 font-bold text-3xl text-white'>
           {selectedCategory} <span className='text-primary'>Videos</span>
         </div>
-        {loadingDetails ? <div className='text-white text-4xl'>Loading ... </div> : <Videos />}
+        {loadingDetails ? (
+          <div className='text-white text-4xl'>Loading ... </div>
+        ) : (
+          <Videos />
+        )}
       </section>
     </main>
   );
