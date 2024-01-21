@@ -66,10 +66,33 @@ a {
   transition: all 0.3s ease;
 }
 
+
 .channelBg{
   background: rgb(238,174,202);
   background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
+
+.side::-webkit-scrollbar{
+    width: 4px;
+}
+ 
+body::-webkit-scrollbar {
+    width: 10px;
+}
+.side::-webkit-scrollbar-track,body::-webkit-scrollbar-track {
+    background: #c9c7c7;
+    border-radius: 5px;
+}
+ 
+.side::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb {
+    background: #fc1503;
+    border-radius: 5px;
+}
+ 
+.side::-webkit-scrollbar-thumb:hover,body::-webkit-scrollbar-thumb:hover {
+    background: #fc1503;
+}
+
 
 @media screen and (max-width: 900px) {
   .category-btn{
