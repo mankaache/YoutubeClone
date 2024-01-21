@@ -6,7 +6,7 @@ import {Navbar} from './components/layout'
 const App = () => {
   return (
     <Router>
-      <div className='bg-gray-800'>
+      <div className='bg-gray-800 h-full'>
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
