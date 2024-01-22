@@ -26,7 +26,7 @@ const Search = () => {
   }
 
   return (
-    <main className='flex w-full md:flex-row flex-col relative '>
+    <main className='flex w-full md:flex-row items-center justify-center flex-col relative '>
       <section className='px-4 md:px-20 pt-[3rem] md:pt-[6rem]'>
         {loadingDetails ? (
           <div className='text-white text-4xl'>Loading ... </div>
