@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {ChannelDetails} from '../../types/channelDetails'
+import { VideoDetails } from '../../types/videoDetails';
 
 const apiURL: string | undefined = import.meta.env.VITE_REACT_APP_BASE_URL;
 
@@ -49,8 +50,8 @@ export const API = createApi({
 
     getChannelVideos: builder.query<
       {
-          kind: 'string';
-          items: Array<{ kind: string; id: any; snippet: any }>;
+        kind: 'string';
+        items: Array<{ kind: string; id: any; snippet: any }>;
       },
       { channelId: string; part: string }
     >({
@@ -63,8 +64,20 @@ export const API = createApi({
         },
       }),
     }),
+
+    getVideoDetails: builder.query<
+      
+        VideoDetails
+      ,
+      { part: string; id: string }
+    >({
+      query: ({part,id}) => ({
+        url: `/videos?part=${part}&id=${id}`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
 
-export const { useGetSearchQuery, useGetChannelQuery, useGetChannelVideosQuery } = API;
+export const { useGetSearchQuery, useGetChannelQuery,useGetVideoDetailsQuery, useGetChannelVideosQuery } = API;
