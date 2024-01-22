@@ -35,8 +35,8 @@ const Home = () => {
         <SideBar />
       </section>
 
-      <section className='md:pl-[16rem] pt-[3rem] md:pt-[6rem]'>
-        <div className='px-7 md:px-0 pb-7 font-bold text-3xl text-white'>
+      <section className='md:pl-[14rem] pt-[3rem] md:pt-[6rem]'>
+        <div className='px-7 md:px-5 pb-7 font-bold text-3xl text-white'>
           {selectedCategory} <span className='text-primary'>Videos</span>
         </div>
         {loadingDetails ? (

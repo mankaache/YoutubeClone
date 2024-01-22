@@ -26,7 +26,7 @@ const SearchBar = () => {
         <FiSearch size={26} className='absolute top-1/2 right-3 text-red-500' />
       </button>
       <input
-        type='search'
+        type='text'
         value={searchTerm}
         onChange={(e)=>{setSearchTerm(e.target.value)}}
         placeholder='search ...'
