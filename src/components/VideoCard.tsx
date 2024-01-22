@@ -12,17 +12,16 @@ import {
 const VideoCard = ({ video:{id: {videoId},snippet}  }: any) => {
     return (
       <>
-        <div className='w-full md:w-[270px] rounded-lg overflow-hidden'>
+        <div className='w-full sm:w-[358px] md:w-[320px] rounded-lg overflow-hidden'>
           <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
-            <div>
+            <div className='w-full sm:w-[358px] md:w-[320px]'>
               <img
                 src={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
                 alt={snippet?.title}
-                className='w-full h-full'
               />
             </div>
           </Link>
-          <div className='bg-[#1e1e1e] h-[92px] px-3 py-2'>
+          <div className='bg-[#1e1e1e] h-auto min-h-[92px] px-3 py-2'>
             <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
               <div className='text-base font-bold text-white'>
                 {snippet?.title.slice(0, 60) || demoVideoTitle.slice(0.6)}
