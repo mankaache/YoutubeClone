@@ -6,12 +6,14 @@ const Videos = () => {
     console.log(vids)
    
   return (
-    <div className='flex flex-wrap justify-center lg:justify-start gap-4 items-center'>
+    <div className='flex flex-wrap md:px-4 justify-center lg:justify-start gap-4 items-center'>
       {vids.map((item, idx) => (
-        <div onClick={()=>{
-          console.log(item)
-        }} key={idx}>
-
+        <div
+          onClick={() => {
+            console.log(item);
+          }}
+          key={idx}
+        >
           {item.id.videoId && <VideoCard video={item} />}
           {item.id.channelId && <ChannelCard channel={item} />}
         </div>

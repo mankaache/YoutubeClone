@@ -10,7 +10,6 @@ const Home = () => {
   const dispatch = useTypedDispatch()
   const selectedCategory = useTypedSelector((state)=>state.video.selectedCategory)
   console.log(selectedCategory)
-  // const names = 'New'
   const {
     data: searchDetails,
     isLoading: loadingDetails,
