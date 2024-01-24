@@ -16,7 +16,7 @@ const VideoCard = ({ video:{id: {videoId},snippet}  }: any) => {
           <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
             <div className='w-full sm:w-[328px] md:w-[280px]'>
               <img
-                src={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
+                src={snippet?.thumbnails?.high?.url ? snippet?.thumbnails?.high?.url  : demoThumbnailUrl}
                 alt={snippet?.title}
               />
             </div>
