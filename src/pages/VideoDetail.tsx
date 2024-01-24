@@ -71,11 +71,11 @@ const VideoDetail = () => {
   );
 
   return (
-    <div className='px-3 md:px-10 pt-24'>
+    <div className='px-3 md:px-10 pt-24 h-full'>
       {videoLoading && relatedVideosLoading ? (
         <Loading />
       ) : (
-        <>
+        <div className=''>
           <div className='flex flex-col md:flex-row gap-4'>
             <div className='flex-1'>
               <div className='w-full sticky top-[86px]'>
@@ -98,9 +98,7 @@ const VideoDetail = () => {
                       className='w-[60px] h-[60px] rounded-full'
                     />
                     <div className='flex items-center gap-2'>
-                      <span className='md:text-3xl '>
-                        {channelTitle}
-                      </span>
+                      <span className='md:text-3xl '>{channelTitle}</span>
                       <FaRegCircleCheck className='text-primary md:text-2xl ml-1' />
                     </div>
                   </Link>
@@ -135,10 +133,9 @@ const VideoDetail = () => {
 
           <div className='md:w-[90%] bg-gray-400/25 py-3 mt-6 rounded-lg text-sm sm:text-base md:text-xl px-5 text-white'>
             <p className='font-bold py-3 text-2xl'>Description</p>
-                  <p className='whitespace-wrap'>
-                      {description.slice(0,600)}
-
-                  </p>
+            <p className='whitespace-wrap'>
+              {description.slice(0, 100)}
+            </p>
           </div>
 
           <div>
@@ -147,7 +144,7 @@ const VideoDetail = () => {
               {''} Comments
             </div>
           </div>
-        </>
+        </div>
       )}
 
       {(VideoDetailsError || relatedVideosError) && (

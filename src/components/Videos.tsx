@@ -6,7 +6,7 @@ const Videos = () => {
     console.log(vids)
    
   return (
-    <div className='flex flex-wrap justify-center gap-5 items-center'>
+    <div className='flex flex-wrap px-3 sm:px-0 justify-center gap-5 items-center'>
       {vids.map((item, idx) => (
         <div
           onClick={() => {

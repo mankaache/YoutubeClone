@@ -27,8 +27,8 @@ const VideoCard = ({ video:{id: {videoId},snippet}  }: any) => {
           </Link>
           <div className='bg-[#1e1e1e] h-auto min-h-[80px] px-3 py-2'>
             <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
-              <div className='text-sm font-bold text-white'>
-                {snippet?.title.slice(0, 30) + '...' ||
+              <div className='text-sm md:text-base font-bold text-white'>
+                {snippet?.title.slice(0, 40) + '...' ||
                   demoVideoTitle.slice(0, 40)}
               </div>
             </Link>

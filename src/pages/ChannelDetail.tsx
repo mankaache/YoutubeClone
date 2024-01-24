@@ -43,17 +43,17 @@ const ChannelDetail = () => {
   console.log(channelVideos?.items, loadingVideos, errorVideos);
 
   return (
-    <div className='w-full py-4'>
+    <div className='w-full py-4 px-4'>
       {channelLoading && loadingVideos ? (
         <Loading />
       ) : (
         <>
           <div className='h-[300px] channelBg z-10 mt-5'>
             <div>
-              <ChannelCard channel={details} mt='mt-80' />
+              <ChannelCard channel={details} mt='mt-60' />
             </div>
           </div>
-          <div className=' mx-auto flex mt-52 justify-center items-center gap-4 flex-wrap '>
+          <div className=' mx-auto flex md:mt-48 mt-40 justify-center items-center gap-4 flex-wrap '>
             {videos &&
               videos.map((item) => (
                 <div key={item.id.videoId}>

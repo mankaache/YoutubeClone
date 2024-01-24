@@ -17,7 +17,7 @@ export const logo = 'https://i.ibb.co/s9Qys2j/logo.png';
 
 export const categories = [
   { name: 'New', icon: <IoHomeSharp /> },
-  { name: 'JS Mastery', icon: <FaCode /> },
+  { name: 'Flux Academy', icon: <FaCode /> },
   { name: 'Coding', icon: <FaCode /> },
   { name: 'ReactJS', icon: <FaCode /> },
   { name: 'NextJS', icon: <FaCode /> },
