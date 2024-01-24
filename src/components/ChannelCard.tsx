@@ -5,7 +5,7 @@ import { FaRegCircleCheck } from 'react-icons/fa6';
 
 const ChannelCard = ({channel,mt}:any) => {
   return (
-    <div className='rounded-[20px] flex justify-center items-center w-[270px] md:w-[280px] h-[300px] m-auto'>
+    <div className='rounded-[20px] flex justify-center items-center w-[220px] md:w-[250px] h-[200px] m-auto'>
       <Link to={`/channel/${channel?.id?.channelId}`}>
         <div className={`flex w-full flex-col ${mt} justify-center text-center text-white`}>
           <div>

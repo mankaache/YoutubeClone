@@ -98,7 +98,7 @@ const VideoDetail = () => {
                       className='w-[60px] h-[60px] rounded-full'
                     />
                     <div className='flex items-center gap-2'>
-                      <span className='md:text-3xl whitespace-nowrap'>
+                      <span className='md:text-3xl '>
                         {channelTitle}
                       </span>
                       <FaRegCircleCheck className='text-primary md:text-2xl ml-1' />
@@ -122,7 +122,7 @@ const VideoDetail = () => {
               </div>
             </div>
 
-            <div className='overflow-auto h-[70em] xl:h-[40em] hidden lg:block'>
+            <div className='overflow-auto h-[60em] xl:h-[60em] hidden lg:block'>
               <div>
                 {relatedVideosList?.map((item) => (
                   <div key={item.id.videoId} className='mt-2'>
@@ -135,7 +135,10 @@ const VideoDetail = () => {
 
           <div className='md:w-[90%] bg-gray-400/25 py-3 mt-6 rounded-lg text-sm sm:text-base md:text-xl px-5 text-white'>
             <p className='font-bold py-3 text-2xl'>Description</p>
-            {description}
+                  <p className='whitespace-wrap'>
+                      {description.slice(0,600)}
+
+                  </p>
           </div>
 
           <div>

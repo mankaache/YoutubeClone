@@ -14,9 +14,13 @@ const VideoCard = ({ video:{id: {videoId},snippet}  }: any) => {
       <>
         <div className='w-full sm:w-[328px] md:w-[250px] rounded-lg overflow-hidden'>
           <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
-            <div className='w-full sm:w-[328px] md:w-[250px]'>
+            <div className='w-full sm:w-[328px] md:w-[250px] rounded-lg'>
               <img
-                src={snippet?.thumbnails?.high?.url ? snippet?.thumbnails?.high?.url  : demoThumbnailUrl}
+                src={
+                  snippet?.thumbnails?.high?.url
+                    ? snippet?.thumbnails?.high?.url
+                    : demoThumbnailUrl
+                }
                 alt={snippet?.title}
               />
             </div>
@@ -24,7 +28,8 @@ const VideoCard = ({ video:{id: {videoId},snippet}  }: any) => {
           <div className='bg-[#1e1e1e] h-auto min-h-[80px] px-3 py-2'>
             <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
               <div className='text-sm font-bold text-white'>
-                {snippet?.title.slice(0, 30) + '...' || demoVideoTitle.slice(0,40)}
+                {snippet?.title.slice(0, 30) + '...' ||
+                  demoVideoTitle.slice(0, 40)}
               </div>
             </Link>
 
