@@ -41,7 +41,7 @@ const Home = () => {
       </section>
 
       <section className='w-full md:pl-[14rem] pt-[3rem] md:pt-[6rem]'>
-        <div className='px-7 md:px-8 pb-7 font-bold text-3xl text-white'>
+        <div className='sm:px-10 px-7 md:px-12 pb-7 font-bold text-3xl text-white'>
           {selectedCategory} <span className='text-primary'>Videos</span>
         </div>
         {loadingDetails ? <Loading /> : <Videos marginLeft={true} />}

@@ -12,7 +12,7 @@ const Videos = ({marginLeft}:VideosProps) => {
 
   return (
     <div
-      className={`${marginLeft ? 'ml-10' : 'ml-0'} flex flex-wrap px-3 sm:px-0 justify-start gap-3 items-center`}
+      className={`${marginLeft ? 'sm:ml-10' : 'ml-0'} flex flex-wrap px-3 sm:px-0 justify-center md:justify-start gap-5 sm:gap-3 items-center`}
     >
       {vids.map((item, idx) => (
         <div

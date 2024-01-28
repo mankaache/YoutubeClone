@@ -12,7 +12,7 @@ import {
 const VideoCard = ({ video:{id: {videoId},snippet}  }: any) => {
     return (
       <>
-        <div className='w-full hover:scale-105 transition-all sm:w-[328px] md:w-[240px] rounded-lg overflow-hidden'>
+        <div className='w-full hover:scale-100 sm:hover:scale-105 transition-all sm:w-[328px] md:w-[240px] rounded-lg overflow-hidden'>
           <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
             <div className='w-full  rounded-lg'>
               <img
