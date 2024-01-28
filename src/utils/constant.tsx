@@ -13,7 +13,7 @@ import { MdSportsMartialArts } from 'react-icons/md';
 import { MdFitnessCenter } from 'react-icons/md';
 import { MdDeveloperMode } from 'react-icons/md';
 
-export const logo = 'https://i.ibb.co/s9Qys2j/logo.png';
+
 
 export const categories = [
   { name: 'New', icon: <IoHomeSharp /> },
