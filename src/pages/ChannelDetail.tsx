@@ -50,7 +50,7 @@ const ChannelDetail = () => {
         <>
           <div className='h-[300px] channelBg z-10 mt-5'>
             <div>
-              <ChannelCard channel={details} mt='mt-60' />
+              <ChannelCard channel={details} mt='mt-80' />
             </div>
           </div>
           <div className=' mx-auto flex md:mt-48 mt-40 justify-center items-center gap-4 flex-wrap '>

@@ -10,7 +10,7 @@ const ChannelCard = ({channel,mt}:any) => {
         <div
           className={`flex w-full flex-col ${mt} justify-center text-center text-white`}
         >
-          <div className='flex justify-center items-center mt-5 md:mt-10'>
+          <div className='flex justify-center items-center  mt-20 md:mt-10'>
             <img
               src={
                 channel?.snippet?.thumbnails?.high?.url

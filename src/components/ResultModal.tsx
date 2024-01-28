@@ -5,11 +5,11 @@ const ResultModal = ({error}:any) => {
   return (
     <div className=' flex justify-center mt-20 px-4 py-3 h-screen'>
       <div>
-        <div className='bg-white w-[500px] min-h-[200px] rounded-lg overflow-hidden'>
+        <div className='bg-white  md:w-[500px] min-h-[200px] rounded-lg overflow-hidden'>
           <div className='w-full bg-primary py-3 text-white'>
             <h3 className='text-center text-2xl font-bold'>Error</h3>
           </div>
-          <div className='flex justify-center items-center mt-10 text-center text-2xl py-5 px-2'>
+          <div className='flex justify-center items-center mt-10 text-center text-xl md:text-2xl py-5 px-2'>
             {error?.error}
           </div>
 

@@ -1,12 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useTypedSelector } from '../redux/hooks'
 import { VideoCard,ChannelCard } from '../components';
 
-const Videos = () => {
-    const vids = useTypedSelector((state)=> state.video.videos)
-    console.log(vids)
-   
+interface VideosProps {
+  marginLeft : boolean
+}
+
+const Videos = ({marginLeft}:VideosProps) => {
+  const vids = useTypedSelector((state) => state.video.videos);
+  console.log(vids);
+
   return (
-    <div className='flex flex-wrap px-3 sm:px-0 justify-center gap-5 items-center'>
+    <div
+      className={`${marginLeft ? 'ml-10' : 'ml-0'} flex flex-wrap px-3 sm:px-0 justify-start gap-3 items-center`}
+    >
       {vids.map((item, idx) => (
         <div
           onClick={() => {
@@ -20,6 +27,6 @@ const Videos = () => {
       ))}
     </div>
   );
-}
+};
 
 export default Videos

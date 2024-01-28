@@ -37,7 +37,9 @@ const Search = () => {
               Search results for{' '}
               <span className='text-primary'>{searchTerm}</span> videos
             </div>
-            <Videos />
+            <div className='flex justify-center items-center'>
+              <Videos marginLeft={false}/>
+            </div>
           </>
         )}
         {errorDetails && <ResultModal error={errorDetails} />}
