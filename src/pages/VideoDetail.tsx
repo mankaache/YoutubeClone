@@ -7,6 +7,7 @@ import {setRecommendedVideos} from '../redux/features'
 import {
   useGetVideoDetailsQuery,
   useGetRelatedVideosQuery,
+  useGetCommentsThreadQuery,
 } from '../redux/api';
 import { useTypedDispatch } from '../redux/hooks';
 import { videoDetails } from '../redux/features';
@@ -46,6 +47,18 @@ const VideoDetail = () => {
     //@ts-expect-error no-error
     setRecommendedVideos(relatedVideos?.items)
   );
+    const {
+      data: commentsThread,
+      isLoading: commentsLoading,
+      error: commentsError,
+    } = useGetCommentsThreadQuery({
+      part: 'snippet',
+      videoId: `${id}`,
+      
+    });
+
+    console.log('comment:', commentsThread?.items, commentsLoading, commentsError);
+    const commentsList = commentsThread?.items;
 
   console.log(relatedVideos?.items, relatedVideosLoading, relatedVideosError);
 
@@ -69,6 +82,8 @@ const VideoDetail = () => {
     //@ts-expect-error no-error
     videoDetails(videocontents?.items[0])
   );
+
+
 
   return (
     <div className='px-3 md:px-10 pt-24 h-full'>
@@ -102,14 +117,14 @@ const VideoDetail = () => {
                       <FaRegCircleCheck className='text-primary md:text-2xl ml-1' />
                     </div>
                   </Link>
-                  <div className='flex gap-3 mt-4 lg:mt-0'>
-                    <div className='flex rounded-full bg-gray-400/25 justify-center items-center px-5 py-1 lg:py-0'>
+                  <div className='flex flex-col sm:flex-row gap-3 mt-4 lg:mt-0'>
+                    <div className='flex rounded-full bg-gray-400/25 justify-center items-center md:px-5 py-1 lg:py-0'>
                       <p className=' px-2 text-xl font-bold'>
                         {parseInt(likeCount).toLocaleString()} {''}
                       </p>
                       <AiOutlineLike size={28} className='' />
                     </div>
-                    <div className='flex rounded-full bg-gray-400/25 justify-center items-center px-5'>
+                    <div className='flex rounded-full bg-gray-400/25 justify-center items-center md:px-5'>
                       <p className=' px-2 text-xl font-bold'>
                         {parseInt(viewCount).toLocaleString()} {''}
                       </p>
@@ -133,17 +148,56 @@ const VideoDetail = () => {
 
           <div className='md:w-[90%] bg-gray-400/25 py-3 mt-6 rounded-lg text-sm sm:text-base md:text-xl px-5 text-white'>
             <p className='font-bold py-3 text-2xl'>Description</p>
-            <p className='whitespace-wrap'>
-              {description.slice(0, 100)}
-            </p>
+            <p className='whitespace-wrap'>{description.slice(0, 100)}</p>
           </div>
 
-          <div>
-            <div className='text-2xl font-bold text-white w-[80%] mt-10'>
+          {!commentsLoading ?
+           (<div className='w-full md:w-[80%]'>
+            <div className='text-2xl font-bold text-white w-[80%] mt-10 mb-8'>
               {parseInt(commentCount).toLocaleString()}
               {''} Comments
             </div>
-          </div>
+            {commentsList?.map((item) => (
+              //@ts-expect-error no-error
+              <div key={item.id.videoId} className='md:ml-10 ml-2'>
+                <div>
+                  <div className='flex flex-col gap-2 mt-2 items-start'>
+                    <div className='text-white font-bold md:text-lg'>
+                      {
+                        item?.snippet?.topLevelComment?.snippet
+                          ?.authorDisplayName
+                      }
+                    </div>
+                    <div className='text-gray-400 text-lg'>
+                      {item?.snippet?.topLevelComment?.snippet?.textOriginal}
+                    </div>
+                    <div className=' mb-1 flex rounded-full justify-center gap-x-4 items-center px-2 '>
+                      <div className='flex justify-center items-center'>
+                        <AiOutlineLike size={23} className='text-white' />
+                        <p className=' px-2 text-xl text-white font-bold'>
+                          {parseInt(
+                            //@ts-expect-error no-error
+                            item?.snippet?.topLevelComment?.snippet?.likeCount
+                          ).toLocaleString()}{' '}
+                          {''}
+                        </p>
+                      </div>
+                      <div className='text-base text-white'>
+                        {parseInt(
+                          //@ts-expect-error no-error
+                          item?.snippet?.totalReplyCount
+                        ).toLocaleString()}{' '}
+                        <span className='underline '>
+                          {item?.snippet?.totalReplyCount > 1 ? 'Replies' : 'Reply'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>) : (<div className='text-white text-xl text-center w-full h-full'>Loading Comments </div>)
+          }
         </div>
       )}
 

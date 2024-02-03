@@ -4,6 +4,7 @@ import { ChannelDetails } from '../../types/channelDetails';
 import {ChannelVideos} from '../../types/channelVideos'
 import { VideoDetails } from '../../types/videoDetails';
 import { RelatedVideos } from '../../types/relatedVideos';
+import { CommentThread } from '../../types/commentThread';
 
 interface initialStateType {
   selectedCategory: string;
@@ -12,6 +13,7 @@ interface initialStateType {
   channelVideos: ChannelVideos | null;
   videoDetails: VideoDetails | null;
   recomendedVideos: RelatedVideos | null;
+  videoComments: CommentThread | null;
 }
 
 const initialState: initialStateType = {
@@ -21,6 +23,7 @@ const initialState: initialStateType = {
   channelVideos: null,
   videoDetails: null,
   recomendedVideos: null,
+  videoComments: null,
 };
 
 export const VideoSlice = createSlice({
@@ -44,9 +47,12 @@ export const VideoSlice = createSlice({
   },
   setRecommendedVideos:(state,action:PayloadAction<RelatedVideos>)=>{
     state.recomendedVideos = action.payload
+  },
+  setVideoComments:(state,action:PayloadAction<CommentThread>)=>{
+    state.videoComments = action.payload
   }
 }
 });
 
- export const { category,setRecommendedVideos, allChannelVideos, videos, videoDetails, setChanneldetails } =
+ export const { category,setVideoComments, setRecommendedVideos, allChannelVideos, videos, videoDetails, setChanneldetails } =
    VideoSlice.actions;

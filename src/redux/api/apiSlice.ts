@@ -4,6 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {ChannelDetails} from '../../types/channelDetails'
 import { VideoDetails } from '../../types/videoDetails';
 import { RelatedVideos } from '../../types/relatedVideos';
+import { CommentThread } from '../../types/commentThread';
 
 const apiURL: string | undefined = import.meta.env.VITE_REACT_APP_BASE_URL;
 
@@ -73,11 +74,14 @@ export const API = createApi({
       }),
     }),
 
-    getRelatedVideos: builder.query<RelatedVideos,{
-      part: string;
-      relatedToVideoId: string;
-      type: string;
-    }>({
+    getRelatedVideos: builder.query<
+      RelatedVideos,
+      {
+        part: string;
+        relatedToVideoId: string;
+        type: string;
+      }
+    >({
       query: ({ part, relatedToVideoId, type }) => ({
         url: `/search?part=${part}&relatedToVideoId=${relatedToVideoId}&type=${type}`,
         method: 'GET',
@@ -86,8 +90,27 @@ export const API = createApi({
         },
       }),
     }),
+   
+
+    getCommentsThread: builder.query<
+      CommentThread,
+      {
+        part: string;
+        videoId: string;
+      }
+    >({
+      query: ({ part, videoId }) => ({
+        url: `/commentThreads?part=${part}&videoId=${videoId}`,
+        method: 'GET',
+        params: {
+          maxResults: '100',
+        },
+      }),
+    }),
   }),
 });
 
 
-export const { useGetSearchQuery, useGetChannelQuery,useGetRelatedVideosQuery, useGetVideoDetailsQuery, useGetChannelVideosQuery } = API;
+export const { useGetSearchQuery,useGetCommentsThreadQuery, useGetChannelQuery,useGetRelatedVideosQuery, useGetVideoDetailsQuery, useGetChannelVideosQuery } = API;
+
+
